@@ -8,8 +8,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,8 +34,8 @@ fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
 ) {
-    val expanded = remember { mutableStateOf(false) }
-    val extraPadding = if (expanded.value) 48.dp else 0.dp
+    var expanded by remember { mutableStateOf(false) }
+    val extraPadding = if (expanded) 48.dp else 0.dp
 
     Surface(
         color = MaterialTheme.colorScheme.primary,
@@ -48,9 +50,9 @@ fun Greeting(
                 Text(text = name)
             }
             ElevatedButton(
-                onClick = { expanded.value = !expanded.value },
+                onClick = { expanded = !expanded },
             ) {
-                Text(if (expanded.value) "Show less" else "Show more")
+                Text(if (expanded) "Show less" else "Show more")
             }
         }
     }
