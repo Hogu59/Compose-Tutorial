@@ -1,5 +1,6 @@
 package com.example.composetutorial.components
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -82,5 +83,19 @@ fun MyAppPreview() {
 fun OnboardingPreview() {
     ComposeTutorialTheme {
         OnboardingScreen(onContinueClicked = {}) // Do nothing on click.
+    }
+}
+
+@Preview(
+    showBackground = true,
+    widthDp = 320,
+    uiMode = UI_MODE_NIGHT_YES,
+    name = "GreetingPreviewDark"
+)
+@Preview(showBackground = true, widthDp = 320)
+@Composable
+private fun GreetingPreview() {
+    ComposeTutorialTheme {
+        Greetings()
     }
 }
